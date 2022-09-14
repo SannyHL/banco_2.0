@@ -1,0 +1,14 @@
+[x] - Criar entidade clientes
+[X] - Criar entidade contas
+[X] - Criar entidade transacoes
+[X] - Criar interface transacoes
+[X] - Criar dtos
+[X] - Criar enum
+[x] - criar repository
+[] - criar service
+[] - criar controller
+[x] - criar classe para realizar operações da conta
+[] - criar microserviço de email
+[] - testar
+[] - 
+[] - 
