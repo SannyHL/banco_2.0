@@ -1,10 +1,12 @@
 package com.banco.bancosan.models;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "transacoes")
-public abstract class TransacoesContasModel implements ITransacoesContas{
+public abstract class TransacoesContasModel{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,44 +29,11 @@ public abstract class TransacoesContasModel implements ITransacoesContas{
     private double fazerPagamento;
     @Column
     private double saldo;
+    @Column
+    private LocalDateTime horarioTransacao;
 
-    ContaCorrenteModel contaCorrente = new ContaCorrenteModel();
-    @Override
-    public void saque(double valor){
-        saldo = saldo - valor;
-    }
-    @Override
-    public void deposito(double valor){
-        saldo = saldo + valor;
-    }
-    @Override
-    public void receberTransferencia(double valor){
-        saldo = saldo + valor;
-    }
-    @Override
-    public void transferir(double valor){
-        saldo = saldo - valor;
-    }
-    @Override
-    public void enviarPix(double valor){
-        saldo = saldo - valor;
-    }
-    @Override
-    public void receberPix(double valor){
-        saldo = saldo + valor;
-    }
-    @Override
-    public void fazerPagamento(double valor){
-        saldo = saldo - valor - 2;
-    }
+    
 
-    public TransacoesContasModel(){
-
-    }
-  
-    @ManyToOne
-    @JoinColumn(name = "contaCC_id")
-    private ContaCorrenteModel conta;
 
     public Integer getId() {
         return id;
@@ -130,14 +99,61 @@ public abstract class TransacoesContasModel implements ITransacoesContas{
         this.fazerPagamento = fazerPagamento;
     }
 
-    public ContaCorrenteModel getConta() {
-        return conta;
+  
+
+    public LocalDateTime getHorarioTransacao() {
+        return horarioTransacao;
+    }
+    public void setHorarioTransacao(LocalDateTime horarioTransacao) {
+        this.horarioTransacao = horarioTransacao;
     }
 
-    public void setConta(ContaCorrenteModel conta) {
-        this.conta = conta;
+    
+    @ManyToOne
+    @JoinColumn(name = "contaCC_id")
+    private ContaCorrenteModel numeroConta;
+
+
+
+
+    public void setSaque(double saque) {
+        this.saque = saque;
     }
 
+    public void setDeposito(double deposito) {
+        this.deposito = deposito;
+    }
+
+    public void setTransferencia(double transferencia) {
+        this.transferencia = transferencia;
+    }
+
+    public void setTransferir(double transferir) {
+        this.transferir = transferir;
+    }
+
+    public void setEnviarPix(double enviarPix) {
+        this.enviarPix = enviarPix;
+    }
+
+    public void setPix(double pix) {
+        this.pix = pix;
+    }
+
+    public void setFazerPagamento(double fazerPagamento) {
+        this.fazerPagamento = fazerPagamento;
+    }
+
+
+    public ContaCorrenteModel getNumeroConta() {
+        return numeroConta;
+    }
+
+    public void setNumeroConta(ContaCorrenteModel numeroConta) {
+        this.numeroConta = numeroConta;
+    }
+    
+    
   
     
 }
