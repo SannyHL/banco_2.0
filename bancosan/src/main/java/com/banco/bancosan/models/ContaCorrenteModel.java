@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "contaCC")
-public class ContaCorrenteModel extends TransacoesContasModel{
+public class ContaCorrenteModel{
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

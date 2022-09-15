@@ -12,3 +12,7 @@
 [] - testar
 [] - 
 [] - 
+
+Classe cliente: Cadastro, busca, atualização, delete;
+Classe Conta corrente: criar conta
+Classe TransaçõesContas: 
