@@ -28,6 +28,8 @@ public class ClienteModel {
     public String email;
     @Column
     public LocalDateTime dataCadastro;
+    @Column
+    public LocalDateTime dataAtualização;
 
     public ClienteModel(){
 
@@ -74,6 +76,14 @@ public class ClienteModel {
     }
     public void setDataCadastro(LocalDateTime dataCadastro) {
         this.dataCadastro = dataCadastro;
+    }
+    
+    public LocalDateTime getDataAtualização() {
+        return dataAtualização;
+    }
+
+    public void setDataAtualização(LocalDateTime dataAtualização) {
+        this.dataAtualização = dataAtualização;
     }
 
     
