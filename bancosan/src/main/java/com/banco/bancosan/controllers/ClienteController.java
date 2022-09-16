@@ -9,7 +9,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -45,10 +44,7 @@ public class ClienteController {
             BeanUtils.copyProperties(clienteDto, clienteModel);
             clienteModel.setDataCadastro(LocalDateTime.now(ZoneId.of("UTC-3")));
             clienteModel.setDataAtualização(LocalDateTime.now(ZoneId.of("UTC-3")));
-            clienteService.create(clienteModel);
-            return new ResponseEntity<>(HttpStatus.CREATED);
-            
-            
+            return new ResponseEntity<>(clienteService.create(clienteModel), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -56,31 +52,28 @@ public class ClienteController {
 
     @GetMapping("/")
     public ResponseEntity<List<ClienteModel>> getAll(){
-        clienteService.findAll();
-        return new ResponseEntity<List<ClienteModel>>(HttpStatus.OK);
+        return new ResponseEntity<List<ClienteModel>>(clienteService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{cpf}")
     public ResponseEntity<ClienteModel> getCpf(@PathVariable(value = "cpf") Integer cpf){
         Optional<ClienteModel> clienteOptional = clienteService.findId(cpf);
         if(clienteOptional.isPresent()){
-            clienteOptional.get();
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(clienteOptional.get(), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     @PostMapping("/") 
-    public ResponseEntity<ClienteModel> cadastrarCliente(@RequestBody @Valid ClienteDto clienteDto){
-        try {
+    public ResponseEntity<ClienteModel> cadastrarCliente(@Valid @RequestBody ClienteDto clienteDto){
+        try{
             var clienteModel = new ClienteModel();
             BeanUtils.copyProperties(clienteDto, clienteModel);
             clienteModel.setDataCadastro(LocalDateTime.now(ZoneId.of("UTC-3")));
-            clienteService.create(clienteModel);
-            return new ResponseEntity<>(HttpStatus.CREATED);
+            return new ResponseEntity<>(clienteService.create(clienteModel), HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
     
