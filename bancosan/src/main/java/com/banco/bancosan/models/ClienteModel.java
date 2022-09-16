@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 
-import org.hibernate.validator.constraints.br.CPF;
 
 
 @Entity
@@ -13,13 +12,13 @@ import org.hibernate.validator.constraints.br.CPF;
 public class ClienteModel {
     
     @Id
-    @CPF
+    @Column
     private Integer cpf;
 
     @Column
     public String nome;
     @Column
-    public String dataNascimeto;
+    public String dataNascimento;
     @Column
     public String telefone;
     @Column
@@ -30,10 +29,6 @@ public class ClienteModel {
     public LocalDateTime dataCadastro;
     @Column
     public LocalDateTime dataAtualização;
-
-    public ClienteModel(){
-
-    }
 
     public Integer getCpf() {
         return cpf;
@@ -47,12 +42,7 @@ public class ClienteModel {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public String getDataNascimeto() {
-        return dataNascimeto;
-    }
-    public void setDataNascimeto(String dataNascimeto) {
-        this.dataNascimeto = dataNascimeto;
-    }
+    
     public String getTelefone() {
         return telefone;
     }
@@ -84,6 +74,12 @@ public class ClienteModel {
 
     public void setDataAtualização(LocalDateTime dataAtualização) {
         this.dataAtualização = dataAtualização;
+    }
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     

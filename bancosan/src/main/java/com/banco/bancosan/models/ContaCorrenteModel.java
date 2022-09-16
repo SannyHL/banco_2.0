@@ -31,12 +31,16 @@ public class ContaCorrenteModel{
     
     @Column
     private LocalDateTime dataVencimento;
+    
+    @Column
+    private LocalDateTime dataAtualizacaoConta;
+    
+    public LocalDateTime getDataAtualizacaoConta() {
+        return dataAtualizacaoConta;
+    }
 
-    
-    
-    public ContaCorrenteModel(){
-        this.agencia = "590";
-        this.statusatualConta = StatusConta.FECHADO;
+    public void setDataAtualizacaoConta(LocalDateTime dataAtualizacaoConta) {
+        this.dataAtualizacaoConta = dataAtualizacaoConta;
     }
 
     public double getSaldo() {
