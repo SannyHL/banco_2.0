@@ -4,12 +4,11 @@ import javax.validation.constraints.NotBlank;
 
 public class ClienteDto {
 
-    @NotBlank
     private Integer cpf;
     @NotBlank
     public String nome;
     @NotBlank
-    public String dataNascimeto;
+    public String dataNascimento;
     @NotBlank
     public String telefone;
     @NotBlank
@@ -17,9 +16,6 @@ public class ClienteDto {
     @NotBlank
     public String email;
 
-    public ClienteDto(){
-
-    }
 
     public Integer getCpf() {
         return cpf;
@@ -33,12 +29,7 @@ public class ClienteDto {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public String getDataNascimeto() {
-        return dataNascimeto;
-    }
-    public void setDataNascimeto(String dataNascimeto) {
-        this.dataNascimeto = dataNascimeto;
-    }
+    
     public String getTelefone() {
         return telefone;
     }
@@ -56,6 +47,12 @@ public class ClienteDto {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
     
     
