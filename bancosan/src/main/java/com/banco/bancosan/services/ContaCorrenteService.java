@@ -25,7 +25,7 @@ public class ContaCorrenteService {
     public ContaCorrenteModel criarConta(ContaCorrenteModel contaCorrenteModel) {
        
         contaCorrenteModel.setAgencia("056");
-        contaCorrenteModel.setSaldo(0d);
+        contaCorrenteModel.setSaldo(contaCorrenteRepository.findAllSaldos());
         contaCorrenteModel.setStatusatualConta(StatusConta.ABERTO);
         contaCorrenteModel.setDataAberuraConta(LocalDateTime.now(ZoneId.of("UTC-3")));
         contaCorrenteModel.setDataVencimento(LocalDateTime.now(ZoneId.of("UTC-3")));
@@ -36,7 +36,7 @@ public class ContaCorrenteService {
     public ContaCorrenteModel atualizarConta(ContaCorrenteModel contaCorrenteModel) {
        
         contaCorrenteModel.setAgencia("056");
-        contaCorrenteModel.setSaldo(0d);
+        contaCorrenteModel.setSaldo(contaCorrenteRepository.findAllSaldos());
         contaCorrenteModel.setStatusatualConta(StatusConta.ABERTO);
         contaCorrenteModel.setDataAtualizacaoConta(LocalDateTime.now(ZoneId.of("UTC-3")));
         contaCorrenteModel.setDataVencimento(LocalDateTime.now(ZoneId.of("UTC-3")));
@@ -54,6 +54,10 @@ public class ContaCorrenteService {
 
     public void delete(ContaCorrenteModel contaCorrenteModel) {
         contaCorrenteRepository.delete(contaCorrenteModel);
+    }
+
+    public double buscaSaldo(){
+        return contaCorrenteRepository.findAllSaldos();
     }
     
 }
