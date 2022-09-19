@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.banco.bancosan.dtos.ContasSaldosDto;
 import com.banco.bancosan.enums.TipoTransacao;
 import com.banco.bancosan.models.TransacoesContasModel;
 import com.banco.bancosan.repositories.TransacoesContasRepository;
@@ -79,5 +80,11 @@ public class TransacoesContasService {
 
     public Optional<TransacoesContasModel> findId(Integer id) {
         return transacoesContasRepository.findById(id);
+    }
+
+
+
+    public ContasSaldosDto buscaSaldos(){
+        return transacoesContasRepository.getSaldos();
     }
 }

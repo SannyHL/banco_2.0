@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.banco.bancosan.dtos.ContasSaldosDto;
 import com.banco.bancosan.enums.StatusConta;
 import com.banco.bancosan.models.ContaCorrenteModel;
 import com.banco.bancosan.repositories.ContaCorrenteRepository;
@@ -25,7 +26,7 @@ public class ContaCorrenteService {
     public ContaCorrenteModel criarConta(ContaCorrenteModel contaCorrenteModel) {
        
         contaCorrenteModel.setAgencia("056");
-        contaCorrenteModel.setSaldo(contaCorrenteRepository.findAllSaldos());
+        contaCorrenteModel.setSaldo(0.0);
         contaCorrenteModel.setStatusatualConta(StatusConta.ABERTO);
         contaCorrenteModel.setDataAberuraConta(LocalDateTime.now(ZoneId.of("UTC-3")));
         contaCorrenteModel.setDataVencimento(LocalDateTime.now(ZoneId.of("UTC-3")));
@@ -36,7 +37,7 @@ public class ContaCorrenteService {
     public ContaCorrenteModel atualizarConta(ContaCorrenteModel contaCorrenteModel) {
        
         contaCorrenteModel.setAgencia("056");
-        contaCorrenteModel.setSaldo(contaCorrenteRepository.findAllSaldos());
+        contaCorrenteModel.setSaldo(0.0);
         contaCorrenteModel.setStatusatualConta(StatusConta.ABERTO);
         contaCorrenteModel.setDataAtualizacaoConta(LocalDateTime.now(ZoneId.of("UTC-3")));
         contaCorrenteModel.setDataVencimento(LocalDateTime.now(ZoneId.of("UTC-3")));
@@ -56,8 +57,5 @@ public class ContaCorrenteService {
         contaCorrenteRepository.delete(contaCorrenteModel);
     }
 
-    public double buscaSaldo(){
-        return contaCorrenteRepository.findAllSaldos();
-    }
-    
+   
 }

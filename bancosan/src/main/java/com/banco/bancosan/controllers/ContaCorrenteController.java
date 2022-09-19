@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.banco.bancosan.dtos.ContaCorrenteDto;
+import com.banco.bancosan.dtos.ContasSaldosDto;
 import com.banco.bancosan.models.ClienteModel;
 import com.banco.bancosan.models.ContaCorrenteModel;
 import com.banco.bancosan.services.ContaCorrenteService;
@@ -51,7 +52,6 @@ public class ContaCorrenteController {
         
         return new ResponseEntity<>(contaCorrenteService.findAll(), HttpStatus.OK);
     }
-
     @GetMapping("/{numeroConta}")
     public ResponseEntity<ContaCorrenteModel> buscarConta(@PathVariable(value = "numeroConta") Integer numeroConta){
         Optional<ContaCorrenteModel> contaOptional = contaCorrenteService.findId(numeroConta);

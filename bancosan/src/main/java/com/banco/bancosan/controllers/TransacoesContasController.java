@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.banco.bancosan.dtos.ContasSaldosDto;
 import com.banco.bancosan.dtos.TransacoesContasDto;
 import com.banco.bancosan.models.TransacoesContasModel;
 import com.banco.bancosan.services.TransacoesContasService;
@@ -188,6 +189,13 @@ public class TransacoesContasController {
         } catch (Exception e) {
            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping("/saldo")
+    public ResponseEntity<ContasSaldosDto> buscarSaldo(){
+        
+            return new ResponseEntity<>(transacoesContasService.buscaSaldos(), HttpStatus.OK);
+        
     }
 
     @GetMapping("/{id}")
