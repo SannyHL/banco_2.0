@@ -10,7 +10,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.banco.bancosan.dtos.ContasSaldosDto;
 import com.banco.bancosan.enums.StatusConta;
 import com.banco.bancosan.models.ContaCorrenteModel;
 import com.banco.bancosan.repositories.ContaCorrenteRepository;
