@@ -10,9 +10,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.banco.bancosan.dtos.ContasSaldosDto;
 import com.banco.bancosan.enums.TipoTransacao;
+import com.banco.bancosan.models.ContaCorrenteModel;
 import com.banco.bancosan.models.TransacoesContasModel;
+import com.banco.bancosan.repositories.ContaCorrenteRepository;
 import com.banco.bancosan.repositories.TransacoesContasRepository;
 
 @Service
@@ -20,58 +21,70 @@ public class TransacoesContasService {
     
     @Autowired
     private TransacoesContasRepository transacoesContasRepository;
-
+    @Autowired
+    private ContaCorrenteRepository contaCorrenteRepository;
+    
     @Transactional
     public TransacoesContasModel createDeposito(TransacoesContasModel transacoesContasModel) {
         transacoesContasModel.setTipo(TipoTransacao.DEPOSITO);
         transacoesContasModel.setHorarioTransacao(LocalDateTime.now(ZoneId.of("UTC-3")));
-        transacoesContasModel.setSaldo(transacoesContasModel.getSaldo() + transacoesContasModel.getValor());
+        ContaCorrenteModel contaCorrente = contaCorrenteRepository.buscarNumeroConta(transacoesContasModel.getNumeroConta().getNumeroConta());
+        contaCorrente.setSaldo(contaCorrente.getSaldo()+transacoesContasModel.getValor());
+        contaCorrenteRepository.save(contaCorrente);
         return transacoesContasRepository.save(transacoesContasModel);
     }
     @Transactional
     public TransacoesContasModel createReceberTransferencia(TransacoesContasModel transacoesContasModel) {
         transacoesContasModel.setTipo(TipoTransacao.RECEBER_TRANSFERENCIA);
         transacoesContasModel.setHorarioTransacao(LocalDateTime.now(ZoneId.of("UTC-3")));
-        transacoesContasModel.setSaldo(transacoesContasModel.getSaldo() + transacoesContasModel.getValor());
+        ContaCorrenteModel contaCorrente = contaCorrenteRepository.buscarNumeroConta(transacoesContasModel.getNumeroConta().getNumeroConta());
+        contaCorrente.setSaldo(contaCorrente.getSaldo()+transacoesContasModel.getValor());
+        contaCorrenteRepository.save(contaCorrente);
         return transacoesContasRepository.save(transacoesContasModel);
     }
     @Transactional
     public TransacoesContasModel createReceberPix(TransacoesContasModel transacoesContasModel) {
         transacoesContasModel.setTipo(TipoTransacao.RECEBER_PIX);
         transacoesContasModel.setHorarioTransacao(LocalDateTime.now(ZoneId.of("UTC-3")));
-        transacoesContasModel.setSaldo(transacoesContasModel.getSaldo() + transacoesContasModel.getValor());
+        ContaCorrenteModel contaCorrente = contaCorrenteRepository.buscarNumeroConta(transacoesContasModel.getNumeroConta().getNumeroConta());
+        contaCorrente.setSaldo(contaCorrente.getSaldo()+transacoesContasModel.getValor());
+        contaCorrenteRepository.save(contaCorrente);
         return transacoesContasRepository.save(transacoesContasModel);
     }
     @Transactional
     public TransacoesContasModel createSaque(TransacoesContasModel transacoesContasModel) {
         transacoesContasModel.setTipo(TipoTransacao.SAQUE);
         transacoesContasModel.setHorarioTransacao(LocalDateTime.now(ZoneId.of("UTC-3")));
-        transacoesContasModel.setSaldo(transacoesContasModel.getSaldo() -
-         transacoesContasModel.getValor());
+        ContaCorrenteModel contaCorrente = contaCorrenteRepository.buscarNumeroConta(transacoesContasModel.getNumeroConta().getNumeroConta());
+        contaCorrente.setSaldo(contaCorrente.getSaldo() - transacoesContasModel.getValor());
+        contaCorrenteRepository.save(contaCorrente);
         return transacoesContasRepository.save(transacoesContasModel);
     }
     @Transactional
     public TransacoesContasModel createTransferencia(TransacoesContasModel transacoesContasModel) {
         transacoesContasModel.setTipo(TipoTransacao.TRANSFERIR);
         transacoesContasModel.setHorarioTransacao(LocalDateTime.now(ZoneId.of("UTC-3")));
-        transacoesContasModel.setSaldo(transacoesContasModel.getSaldo() -
-         transacoesContasModel.getValor());
+        ContaCorrenteModel contaCorrente = contaCorrenteRepository.buscarNumeroConta(transacoesContasModel.getNumeroConta().getNumeroConta());
+        contaCorrente.setSaldo(contaCorrente.getSaldo() - transacoesContasModel.getValor());
+        contaCorrenteRepository.save(contaCorrente);
         return transacoesContasRepository.save(transacoesContasModel);
     }
     @Transactional
     public TransacoesContasModel createEnviarPix(TransacoesContasModel transacoesContasModel) {
         transacoesContasModel.setTipo(TipoTransacao.ENVIAR_PIX);
         transacoesContasModel.setHorarioTransacao(LocalDateTime.now(ZoneId.of("UTC-3")));
-        transacoesContasModel.setSaldo(transacoesContasModel.getSaldo() -
-         transacoesContasModel.getValor());
+        ContaCorrenteModel contaCorrente = contaCorrenteRepository.buscarNumeroConta(transacoesContasModel.getNumeroConta().getNumeroConta());
+        contaCorrente.setSaldo(contaCorrente.getSaldo() - transacoesContasModel.getValor());
+        contaCorrenteRepository.save(contaCorrente);
         return transacoesContasRepository.save(transacoesContasModel);
     }
     @Transactional
     public TransacoesContasModel createPagamento(TransacoesContasModel transacoesContasModel) {
         transacoesContasModel.setTipo(TipoTransacao.FAZER_PAGAMENTO);
         transacoesContasModel.setHorarioTransacao(LocalDateTime.now(ZoneId.of("UTC-3")));
-        transacoesContasModel.setSaldo(transacoesContasModel.getSaldo() -
-         transacoesContasModel.getValor());
+        ContaCorrenteModel contaCorrente = contaCorrenteRepository.buscarNumeroConta(transacoesContasModel.getNumeroConta().getNumeroConta());
+        contaCorrente.setSaldo(contaCorrente.getSaldo() - transacoesContasModel.getValor());
+        contaCorrenteRepository.save(contaCorrente);
         return transacoesContasRepository.save(transacoesContasModel);
     }
     public List<TransacoesContasModel> findAll() {
@@ -82,9 +95,4 @@ public class TransacoesContasService {
         return transacoesContasRepository.findById(id);
     }
 
-
-
-    public ContasSaldosDto buscaSaldos(){
-        return transacoesContasRepository.getSaldos();
-    }
 }
