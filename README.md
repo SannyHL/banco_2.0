@@ -9,15 +9,16 @@
 
 
 ### Descrição:
-Esse projeto tem como objetivo criar um sistema que cadastre um cliente, cadastre a conta, faça transações e envie um e-mail para o clinte a cada transação.
+Esse projeto teve como objetivo a criação de um sistema no qual é possivel cadastrar clientes, contas correntes e realizar transações, como pix, depositos dentre outros.
+O cadastro da conta é realizado através do CPF do cliente, e a transação utiliza o numero da conta.
+Após realizar as transações é possivel ver o saldo do cliente atravez da consulta da sua conta corrente. 
 
 ### **Razões para este projeto:**
 
-- Desenvolver mais habilidade sobre Spring Boot, integração com banco de dados.
+- Desenvolver habilidade sobre Spring Boot, integração com banco de dados, relacionamentos de entidades, @Query e JPQL.
 
 
-#### ⚠Para utilizar essa aplicação é necessário o "application.properties".
+#### ⚠Para utilizar essa aplicação é necessário o "application.properties" com as configurações do banco de dados.
 
-##### Os programas que estão sendo utilizados no desenvolvimento desse projeto são: VSCode ***(editor de texto)***, Navegador Google Chrome ***(para acesso ao banco de dados H2)*** e Postman ***(para realizar as operações do CRUD)***. 
+##### Os programas que estão sendo utilizados no desenvolvimento desse projeto são: VSCode ***(editor de texto)***, Navegador Google Chrome ***(para acesso ao banco de dados H2)**. 
 
-### ⚠Programa em desenvolvimento...
