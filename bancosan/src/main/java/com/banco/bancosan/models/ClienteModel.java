@@ -13,7 +13,7 @@ public class ClienteModel {
     
     @Id
     @Column
-    private Integer cpf;
+    private Long cpf;
 
     @Column
     public String nome;
@@ -30,10 +30,10 @@ public class ClienteModel {
     @Column
     public LocalDateTime dataAtualização;
 
-    public Integer getCpf() {
+    public Long getCpf() {
         return cpf;
     }
-    public void setCpf(Integer cpf) {
+    public void setCpf(Long cpf) {
         this.cpf = cpf;
     }
     public String getNome() {

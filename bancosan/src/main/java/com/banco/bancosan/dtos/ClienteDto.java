@@ -4,7 +4,7 @@ import javax.validation.constraints.NotBlank;
 
 public class ClienteDto {
 
-    private Integer cpf;
+    private Long cpf;
     @NotBlank
     public String nome;
     @NotBlank
@@ -17,10 +17,10 @@ public class ClienteDto {
     public String email;
 
 
-    public Integer getCpf() {
+    public Long getCpf() {
         return cpf;
     }
-    public void setCpf(Integer cpf) {
+    public void setCpf(Long cpf) {
         this.cpf = cpf;
     }
     public String getNome() {

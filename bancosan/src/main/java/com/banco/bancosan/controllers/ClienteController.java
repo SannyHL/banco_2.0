@@ -39,7 +39,7 @@ public class ClienteController {
     }
 
     @GetMapping("/{cpf}")
-    public ResponseEntity<ClienteModel> getCpf(@PathVariable(value = "cpf") Integer cpf){
+    public ResponseEntity<ClienteModel> getCpf(@PathVariable(value = "cpf") Long cpf){
         Optional<ClienteModel> clienteOptional = clienteService.findId(cpf);
         if(clienteOptional.isPresent()){
             return new ResponseEntity<>(clienteOptional.get(), HttpStatus.OK);
@@ -61,7 +61,7 @@ public class ClienteController {
     }
     
     @PutMapping("/{cpf}")
-    public ResponseEntity<ClienteModel> atualizaCadastro(@PathVariable(value = "cpf") Integer cpf, @RequestBody @Valid ClienteDto clienteDto){
+    public ResponseEntity<ClienteModel> atualizaCadastro(@PathVariable(value = "cpf") Long cpf, @RequestBody @Valid ClienteDto clienteDto){
         Optional<ClienteModel> clienteOptional = clienteService.findId(cpf);
         if(clienteOptional.isPresent()){
             try {
@@ -79,7 +79,7 @@ public class ClienteController {
     }
 
     @DeleteMapping("/{cpf}")
-    public ResponseEntity<ClienteModel> excluiCadastro(@PathVariable(value = "cpf") Integer cpf){
+    public ResponseEntity<ClienteModel> excluiCadastro(@PathVariable(value = "cpf") Long cpf){
         Optional<ClienteModel> clienteOptional = clienteService.findId(cpf);
         if(clienteOptional.isPresent()){
             try {

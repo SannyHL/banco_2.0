@@ -26,7 +26,7 @@ public class ClienteService {
         return clienteRepository.findAll();
     }
 
-    public Optional<ClienteModel> findId(Integer cpf) {
+    public Optional<ClienteModel> findId(Long cpf) {
         return clienteRepository.findById(cpf);
     }
 

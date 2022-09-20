@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.banco.bancosan.models.ClienteModel;
 
-public interface ClienteRepository extends JpaRepository<ClienteModel, Integer>{
+public interface ClienteRepository extends JpaRepository<ClienteModel, Long>{
     
 }
