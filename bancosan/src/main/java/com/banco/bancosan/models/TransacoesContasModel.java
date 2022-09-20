@@ -19,8 +19,6 @@ public class TransacoesContasModel{
     @Column
     private double valor;
     @Column
-    private double saldo;
-    @Column
     private LocalDateTime horarioTransacao;
 
     
@@ -46,16 +44,6 @@ public class TransacoesContasModel{
 
     public void setTipo(TipoTransacao tipo) {
         this.tipo = tipo;
-    }
-
-
-    public double getSaldo() {
-        return saldo;
-    }
-
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
     }
 
 
