@@ -22,3 +22,10 @@ Após realizar as transações é possivel ver o saldo do cliente atravez da con
 
 ##### Os programas que estão sendo utilizados no desenvolvimento desse projeto são: VSCode ***(editor de texto)***, Navegador Google Chrome ***(para acesso ao banco de dados H2)**. 
 
+#### ✔Exemplo de json para cadastro de clientes:
+<img src="https://user-images.githubusercontent.com/104280692/191261404-e9f0e699-eabb-49c7-84d2-de5b7e0783ad.png" height="150px"></img>
+#### ✔Exemplo de json para cadastro de contas:
+<img src="https://user-images.githubusercontent.com/104280692/191261407-4a2b374f-9a9f-498e-ab6e-374ded32931b.png" height="150px"></img>
+#### ✔Exemplo de json para transações:
+<img src="https://user-images.githubusercontent.com/104280692/191261396-870f1071-b9a6-4475-8797-83e5404f321b.png" height="150px"></img>
+
