@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.banco.bancosan.dtos.ContaCorrenteDto;
-import com.banco.bancosan.dtos.ContasSaldosDto;
-import com.banco.bancosan.models.ClienteModel;
 import com.banco.bancosan.models.ContaCorrenteModel;
 import com.banco.bancosan.services.ContaCorrenteService;
 
@@ -29,24 +27,8 @@ import com.banco.bancosan.services.ContaCorrenteService;
 public class ContaCorrenteController {
     
     @Autowired
-    private ContaCorrenteService contaCorrenteService =  new ContaCorrenteService();
+    private ContaCorrenteService contaCorrenteService;
 
-    @GetMapping("/novaconta")
-    public String getConta(){
-        return "abrirconta";
-    }
-
-    @PostMapping("/novaconta")
-    public ResponseEntity<ContaCorrenteModel> novaContaNavegador(ContaCorrenteDto contaCorrenteDto){
-        try{
-            var contaCorrenteModel = new ContaCorrenteModel();
-            BeanUtils.copyProperties(contaCorrenteDto, contaCorrenteModel);
-            
-            return new ResponseEntity<>(contaCorrenteService.criarConta(contaCorrenteModel), HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }
     @GetMapping("/")
     public ResponseEntity<List<ContaCorrenteModel>> bucarContas(){
         

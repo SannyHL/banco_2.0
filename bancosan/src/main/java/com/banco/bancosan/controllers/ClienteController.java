@@ -32,23 +32,6 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
-    @GetMapping("/cadastro/")
-    public String getCadastro(){
-        return "cadastro";
-    }
-
-    @PostMapping("/cadastro/")
-    public ResponseEntity<ClienteModel> cadastrarClienteNavegador(ClienteDto clienteDto){
-        try {
-            var clienteModel = new ClienteModel();
-            BeanUtils.copyProperties(clienteDto, clienteModel);
-            clienteModel.setDataCadastro(LocalDateTime.now(ZoneId.of("UTC-3")));
-            clienteModel.setDataAtualização(LocalDateTime.now(ZoneId.of("UTC-3")));
-            return new ResponseEntity<>(clienteService.create(clienteModel), HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }
 
     @GetMapping("/")
     public ResponseEntity<List<ClienteModel>> getAll(){
